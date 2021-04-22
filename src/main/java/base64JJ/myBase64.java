@@ -1,0 +1,78 @@
+package base64JJ;
+
+
+
+
+import java.io.UnsupportedEncodingException;
+import java.util.Base64;
+
+/**
+ * base64  有时候乱码 但是   解密出的数据是没有问题的
+ */
+public class myBase64 {
+
+    public static final String UTF_8 = "UTF-8";
+    public static Base64.Encoder encoder;
+    //即为安全的编码方式，替换“+” “/” “-”为“_”
+    public static Base64.Encoder urlEncoder;
+    public static Base64.Decoder decoder;
+    public static Base64.Decoder urlDecoder;
+
+    static {
+        encoder = Base64.getEncoder();
+        urlEncoder = Base64.getUrlEncoder();
+        decoder = Base64.getDecoder();
+        urlDecoder = Base64.getUrlDecoder();
+    }
+
+    public static void main(String[] args) throws UnsupportedEncodingException {
+
+
+
+//         decoder = Base64.getDecoder();
+//         encoder = Base64.getEncoder();
+//         String text = "字串文字";
+//         byte[] textByte = text.getBytes("UTF-8");
+////编码
+//         String encodedText = encoder.encodeToString(textByte);
+//        System.out.println(encodedText);
+////解码
+//        encodedText = "T1RUTwAJAIAAAwAQQ0ZGIPCso90AAATsAAAEqk9TLzJlQl+tAAABAAAAAGBjbWFwAC4IsgAABAQAAADIaGVhZBjhde4AAACcAAAANmhoZWEA3wBdAAAA1AAAACRobXR4CPoAAAAACZgAAAAsbWF4cAALUAAAAAD4AAAABm5hbWUKXYQxAAABYAAAAqNwb3N0AAMAAAAABMwAAAAgAAEAAAABAADgVRzmXw889QADAQAAAAAA3KQboQAAAADcpBuhAAT//wB+ALUAAAADAAIAAAAAAAAAAQAAAN3/xQAAAIwAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAsAAFAAAAsAAAADAH8B9AAFAAACigK7AAAAjAKKArsAAAHfADEBAgAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAACBYWFhYAEAAWgBjAN3/xQAAALUAAQAAAAEAAAAAAG8AtQAAAAAAAAAAACIBngABAAAAAAAAAAEAQgABAAAAAAABAAwAAAABAAAAAAACAAYAJAABAAAAAAADABUAxgABAAAAAAAEABMANgABAAAAAAAFAAsApQABAAAAAAAGABIAbwABAAAAAAAHAAEAQgABAAAAAAAIAAEAQgABAAAAAAAJAAEAQgABAAAAAAAKAAEAQgABAAAAAAALAAEAQgABAAAAAAAMAAEAQgABAAAAAAANAAEAQgABAAAAAAAOAAEAQgABAAAAAAAQAAwAAAABAAAAAAARAAYAJAADAAEECQAAAAIAYQADAAEECQABABgADAADAAEECQACAAwAKgADAAEECQADACoA2wADAAEECQAEACYASQADAAEECQAFABYAsAADAAEECQAGACQAgQADAAEECQAHAAIAYQADAAEECQAIAAIAYQADAAEECQAJAAIAYQADAAEECQAKAAIAYQADAAEECQALAAIAYQADAAEECQAMAAIAYQADAAEECQANAAIAYQADAAEECQAOAAIAYQADAAEECQAQABgADAADAAEECQARAAwAKk9wZW5UeXBlU2FucwBPAHAAZQBuAFQAeQBwAGUAUwBhAG4Ac01lZGl1bQBNAGUAZABpAHUAbU9wZW5UeXBlU2FucyBNZWRpdW0ATwBwAGUAbgBUAHkAcABlAFMAYQBuAHMAIABNAGUAZABpAHUAbU9wZW5UeXBlU2Fuc01lZGl1bQBPAHAA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";
+//        System.out.println(new String(decoder.decode(encodedText), "UTF-8"));
+
+
+    }
+
+    public String getDecoder(String str) {
+        String decoderStr = "";
+        try {
+            byte[] base64decodedBytes = Base64.getDecoder().decode(str);
+            System.out.println("----------------------------------");
+            //  ASCII  ISO8859-1  GB2312  GBK  GB18030  UTF-16  UTF-8  UNICODE  UnicodeLittle UnicodeBig
+            // BIG5  Shift_JIS  ISO-8859-2
+            decoderStr = new String(decoder.decode(str.getBytes()), "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return decoderStr;
+    }
+
+
+
+    /**
+     * 将 s 进行 BASE64 编码
+     *
+     * @return String
+     * @author lifq
+     * @date 2015-3-4 上午09:24:02
+     */
+    public  void decryptBASE64()  {
+        String data = "";
+        Base64.Decoder decoder = Base64.getDecoder();
+        byte[] buffer = decoder.decode(data);
+        System.out.println(buffer.toString());
+    }
+
+
+
+}
